@@ -1,5 +1,5 @@
 EditSettings() {
-	static ext, dir, fName, overwrite, mainHotkey, setHotkey, promptOpen, dClickAction
+	static ext, dir, fName, overwrite, mainHotkey, setHotkey, promptOpenDir, closeAfterCapture, dClickAction
 	save:=s.ea("//save"), opts:=s.ssn("//options"), hotkeys:=[]
 	
 	while, ext:=s.sn("//extensions/ext").item(A_Index-1)
@@ -25,7 +25,8 @@ EditSettings() {
 	Gui, Font, s11 norm
 	Gui, Add, Edit, y+5 w600 h30 cBlack vfName, % save.name
 	Gui, Add, Checkbox, % "y+20 xm voverwrite" (s.ea("//options").overwrite ? " Checked" : ""), Automatically Overwrite Files
-	Gui, Add, Checkbox, % "y+10 xm vpromptOpen" (s.ea("//options").promptOpenDir ? " Checked" : ""), Prompt to Open Dir After Capture
+	Gui, Add, Checkbox, % "y+10 xm vpromptOpenDir" (s.ea("//options").promptOpenDir ? " Checked" : ""), Prompt to Open Dir After Capture
+	Gui, Add, Checkbox, % "y+10 xm vcloseAfterCapture" (s.ea("//options").closeAfterCapture ? " Checked" : ""), Close DataViewer Windows After Capture
 	Gui, Add, Text, y+20 xm, Double-click Tray Icon Action:
 	Gui, Add, DropDownList, x+5 yp-2 vdClickAction, % RegExReplace(StrReplace(s.ssn("//trayclick").text, s.ssn("//trayclick/@default").text, s.ssn("//trayclick/@default").text "|"), "\|$", "||")
 	Gui, Add, Text, y+20 xm, Main Capture Hotkey
@@ -52,10 +53,7 @@ EditSettings() {
 		return
 	}
 	s.add2("save", {dir:RegExReplace(dir, "\\$"), ext:Format("{1:U}",ext), name:fName})
-	;for c, v in {dir:RegExReplace(dir, "\\$"), ext:Format("{1:U}",ext), name:fName}
-	;s.ssn("//save").setAttribute(c, v)
-	for c, v in {overwrite:overwrite, promptOpenDir:promptOpen}
-		s.ssn("//options/@" c).text := v
+	s.add2("options", {overwrite:overwrite, promptOpenDir:promptOpenDir, closeAfterCapture:closeAfterCapture})
 	for c, v in {Capture:mainHotkey, EditSettings:setHotkey}
 		s.ssn("//hotkeys/cmd[@name='" c "']").text := v
 	s.ssn("//trayclick/@default").text := dClickAction

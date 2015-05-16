@@ -1,5 +1,5 @@
 DefaultSettings() {
-	opts := s.add2("options", {overwrite:0, promptOpenDir:1})
+	opts := s.add2("options", {overwrite:0, promptOpenDir:1, closeAfterCapture:0})
 	exts := s.under(opts, "extensions")
 	for c, v in ["JPG","GIF","PNG","BMP","TIFF"]
 		s.under(exts, "ext",, v)

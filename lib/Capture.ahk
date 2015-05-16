@@ -23,6 +23,8 @@ Capture() {
 		Gdip_DisposeImage(pBitmap)
 	}
 	Gdip_Shutdown(pToken)
+	if (opts.closeAfterCapture)
+		WinClose, ahk_group DVWins
 	SetBatchLines, %BL%
 	if (m(wList.MaxIndex() " windows captured. " (opts.promptOpenDir ? "Open output folder?`n`n(You can disable this prompt in settings)" : ""), "title:DataViewer Capture Complete!","ico:i", opts.promptOpenDir ? "btn:yn" : "") = "YES")
 		Run, % "explore " sDir
