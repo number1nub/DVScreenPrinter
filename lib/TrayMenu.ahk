@@ -5,6 +5,7 @@ TrayMenu() {
 	Menu, Tray, NoStandard
 	Menu, Tray, Add, Edit Settings, EditSettings
 	Menu, Tray, Add, Capture Screens, Capture
+	Menu, Tray, Add, Open Captures Folder, MenuAction
 	Menu, Tray, Add
 	Menu, Tray, Add, Backup/Export Settings, MenuAction
 	Menu, Tray, Add, Import Settings from File, MenuAction

@@ -9,11 +9,10 @@ Capture() {
 		ExitApp
 	}
 	WinRestore, ahk_group DVWins
-	for c, v in wList {
-		;Restore(v.id)
-		if (!FileExist(sDir:=ReplaceTags(save.dir, v)))
+	for c, v in wList {		
+		if (!FileExist(sDir:=Tags(save.dir, v)))
 			FileCreateDir, %sDir%
-		if (FileExist(fName:=sDir "\" ReplaceTags(save.name, v) "." save.ext)) {
+		if (FileExist(fName:=sDir "\" Tags(save.name, v) "." save.ext)) {
 			if (!opts.overwrite)
 				if (m("Overwrite existing file """ fName """?", "(You can disable this prompt in settings)", "btn:yn", "ico:?") != "YES")
 					continue

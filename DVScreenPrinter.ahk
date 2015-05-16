@@ -5,6 +5,7 @@ SetTitleMatchMode, 3
 OnExit("Exit")
 
 global s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml")
+
 if (!s.fileExists)
 	DefaultSettings()
 ;else
@@ -36,9 +37,10 @@ return
 #Include <MenuAction>
 #Include <RegisterHotkeys>
 #Include <Reload>
-#Include <ReplaceTags>
 #Include <Restore>
 #Include <ssn>
+#Include <Tags>
+#Include <TimeStamp>
 #Include <TrayMenu>
 #Include <TrayTip>
 #Include <UpdateSettings>

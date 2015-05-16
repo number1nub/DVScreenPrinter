@@ -1,6 +1,6 @@
 MenuAction(){
 	if (A_ThisMenuItem = "Open Captures Folder") {
-		dir := ReplaceTags(s.ssn("//save/@dir").text)
+		dir := Tags(s.ssn("//save/@dir").text, "strip")
 		Run, explore "%dir%"
 	}
 	else if (A_ThisMenuItem = "Backup/Export Settings") {
