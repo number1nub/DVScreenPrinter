@@ -4,20 +4,20 @@ SetWorkingDir, %A_ScriptDir%
 SetTitleMatchMode, 3
 OnExit("Exit")
 
-global s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml")
+global s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml"), hFontSize, stFontSize
 
 if (!s.fileExists)
 	DefaultSettings()
-;else
-;UpdateSettings()
-if (FileExist("minicap"))
-	FileDelete, minicap
-TrayMenu()
+else
+	UpdateSettings()
+
 if (!FileExist(A_ScriptDir "\gdiplus.dll") && A_IsCompiled)
 	FileInstall, gdiplus.dll, %A_ScriptDir%\gdiplus.dll
+TrayMenu()
 RegisterHotkeys()
 CheckUpdate()
 return
+
 
 
 #Include <Activate>

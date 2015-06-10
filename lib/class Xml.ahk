@@ -33,12 +33,12 @@ class xml
 	
 	search(node, find, return="") {
 		found:=this.xml.SelectNodes(node "[contains(.,'" RegExReplace(find,"&","')][contains(.,'") "')]")
-		while,ff:=found.item(a_index-1)
+		while,ff:=found.item[A_Index-1]
 			if (ff.text = find) {
-			if (return)
-				return ff.SelectSingleNode("../" return)
-			return ff.SelectSingleNode("..")
-		}
+				if (return)
+					return ff.SelectSingleNode("../" return)
+				return ff.SelectSingleNode("..")
+			}
 	}
 	
 	lang(info) {
@@ -198,7 +198,7 @@ class xml
 		else
 			for a, b in path
 				nodes := this.sn("//*[@" a "='" b "']/@*")
-		while, (n:=nodes.item(A_Index-1))
+		while, (n:=nodes.item[A_Index-1])
 			list[n.nodename] := n.text
 		return list
 	}

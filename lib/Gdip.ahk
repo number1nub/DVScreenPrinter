@@ -42,7 +42,7 @@ Gdip_SaveBitmapToFile(pBitmap, sOutput, Quality=75) {
 	
 	Loop, %nCount%
 	{
-		Location := NumGet(ci, 76*(A_Index-1)+44)
+		Location := NumGet(ci, 76*[A_Index-1]+44)
 		if !A_IsUnicode
 		{
 			nSize := DllCall("WideCharToMultiByte", "uint", 0, "uint", 0, "uint", Location, "int", -1, "uint", 0, "int",  0, "uint", 0, "uint", 0)
@@ -56,11 +56,11 @@ Gdip_SaveBitmapToFile(pBitmap, sOutput, Quality=75) {
 			nSize := DllCall("WideCharToMultiByte", "uint", 0, "uint", 0, "uint", Location, "int", -1, "uint", 0, "int",  0, "uint", 0, "uint", 0)
 			sString := ""
 			Loop, %nSize%
-				sString .= Chr(NumGet(Location+0, 2*(A_Index-1), "char"))
+				sString .= Chr(NumGet(Location+0, 2*[A_Index-1], "char"))
 			if !InStr(sString, "*" Extension)
 				continue
 		}
-		pCodec := &ci+76*(A_Index-1)
+		pCodec := &ci+76*[A_Index-1]
 		break
 	}
 	if !pCodec
@@ -76,9 +76,9 @@ Gdip_SaveBitmapToFile(pBitmap, sOutput, Quality=75) {
 			DllCall("gdiplus\GdipGetEncoderParameterList", "uint", pBitmap, "uint", pCodec, "uint", nSize, "uint", &EncoderParameters)
 			Loop, % NumGet(EncoderParameters)      ;%
 			{
-				if (NumGet(EncoderParameters, (28*(A_Index-1))+20) = 1) && (NumGet(EncoderParameters, (28*(A_Index-1))+24) = 6)
+				if (NumGet(EncoderParameters, (28*[A_Index-1])+20) = 1) && (NumGet(EncoderParameters, (28*[A_Index-1])+24) = 6)
 				{
-					p := (28*(A_Index-1))+&EncoderParameters
+					p := (28*[A_Index-1])+&EncoderParameters
 					NumPut(Quality, NumGet(NumPut(4, NumPut(1, p+0)+20)))
 					break
 				}

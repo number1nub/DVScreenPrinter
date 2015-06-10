@@ -7,7 +7,7 @@ DefaultSettings() {
 	hk := s.add2("hotkeys")
 	s.under(hk, "cmd",{name:"Capture"}, "^1")
 	s.under(hk, "cmd", {name:"EditSettings"}, "+^s")
-	s.add2("trayclick", {default:"Edit settings"}, "Edit Settings|Capture Screens")
+	s.add2("trayclick", {default:"Edit settings"}, "Edit Settings|Capture Screens|Close All DV Windows")
 	s.add2("version",, StrReplace(";auto_version", "Version="))
 	s.save(1)
 }

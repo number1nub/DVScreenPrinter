@@ -6,7 +6,7 @@ TrayMenu() {
 	Menu, Tray, Add, Edit Settings, EditSettings
 	Menu, Tray, Add, Capture Screens, Capture
 	Menu, Tray, Add, Open Captures Folder, MenuAction
-	Menu, Tray, Add, Close all DataViewer Windows, MenuAction
+	Menu, Tray, Add, Close all DV Windows, MenuAction
 	Menu, Tray, Add
 	Menu, Tray, Add, Backup/Export Settings, MenuAction
 	Menu, Tray, Add, Import Settings from File, MenuAction
