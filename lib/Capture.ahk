@@ -1,9 +1,8 @@
 Capture() {
-	wFilter := "(?P<Name>.+) - TerraVici DataViewer - (?P<File>.+)"
-	wIgnore := "TerraVici DataViewer \d+\.\d+"
-	wList := GetWinList(wFilter, wIgnore)
+	wList := GetWinList()
 	if (wList.MaxIndex() < 1)
 		return m("No DataViewer chart windows found!", "ico:!")
+	
 	BL:=A_BatchLines, save:=s.ea("//save"), opts:=s.ea("//options")
 	SetBatchLines, -1
 	If (!pToken := Gdip_Startup()) {
@@ -11,7 +10,7 @@ Capture() {
 		ExitApp
 	}
 	WinRestore, ahk_group DVWins
-	for c, v in wList {		
+	for c, v in wList {
 		if (!FileExist(sDir:=Tags(save.dir, v)))
 			FileCreateDir, %sDir%
 		if (FileExist(fName:=sDir "\" Tags(save.name, v) "." save.ext)) {

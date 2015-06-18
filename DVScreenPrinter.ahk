@@ -4,7 +4,8 @@ SetWorkingDir, %A_ScriptDir%
 SetTitleMatchMode, 3
 OnExit("Exit")
 
-global s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml"), hFontSize, stFontSize
+
+global s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml"), hdrFont, subFont
 
 if (!s.fileExists)
 	DefaultSettings()
@@ -25,6 +26,7 @@ return
 #Include <Capture>
 #Include <CheckUpdate>
 #Include <class Xml>
+#Include <CloseDVWins>
 #Include <ConvertHotkey>
 #Include <DefaultSettings>
 #Include <EditSettings>
