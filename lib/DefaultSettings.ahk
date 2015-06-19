@@ -1,6 +1,6 @@
 DefaultSettings() {
 	;File Save
-	save := s.add2("save", {dir:"$appDir\Captures\$rssNum", name:"$windowName - $fileName", ext:"PNG"})
+	save := s.add2("save", {dir:"$appDir\Captures\RSS $rssNum", name:"$windowName - $fileName", ext:"PNG"})
 	
 	;Capture Options
 	opts := s.add2("options", {overwrite:0, promptOpenDir:1, closeAfterCapture:0})
