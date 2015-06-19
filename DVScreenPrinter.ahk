@@ -3,10 +3,12 @@
 SetWorkingDir, %A_ScriptDir%
 SetTitleMatchMode, 3
 
-global s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml"), hdrFont, subFont
+global s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml")
 
 info = %1%
 CheckCredentials(info, 1)
+if (info)
+	TrayTip, DVScreenPrinter, `nRunning as Admin..., 1, 1
 if (!s.fileExists)
 	DefaultSettings()
 else

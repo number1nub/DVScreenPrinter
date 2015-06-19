@@ -16,11 +16,9 @@ UpdateSettings() {
 		for c, v in StrSplit(extList, ",")
 			s.under(exts, "ext",, v)
 	}
-	
 	;TrayClick
 	if (s.ssn("//trayclick").text != tkList)
 		s.ssn("//trayclick").text := tkList
-	
 	;Hotkeys
 	if (!s.ssn("//hotkeys/cmd[1]/@description").text) {
 		curHks:=[]
@@ -30,6 +28,12 @@ UpdateSettings() {
 		hks := s.add2("hotkeys")
 		for c, v in hkList
 			s.under(hks, "cmd", {name:c, description:v}, curHks[c])
+	}
+	;GUI Style
+	if (!s.ssn("//style/header/@size").text) {
+		style := s.add2("style", {background:"F5F5F5", control:"White", color:"Blue", font:"Segoe UI"})
+		s.under(style, "header", {size:10})
+		s.under(style, "label", {size:8})
 	}
 	s.save(1)
 }

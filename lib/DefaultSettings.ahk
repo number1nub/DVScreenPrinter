@@ -17,6 +17,12 @@ DefaultSettings() {
 	s.under(hk, "cmd", {name:"CloseDVWins",description:"Close all DV Windows"})
 	
 	;Tray DoubleClick
-	s.add2("trayclick", {default:"Edit settings"}, "Edit Settings|Capture Screens|Close All DV Windows")	
+	s.add2("trayclick", {default:"Edit settings"}, "Edit Settings|Capture Screens|Close All DV Windows")
+	
+	;Style
+	style := s.add2("style", {background:"F5F5F5", control:"White", color:"Blue", font:"Segoe UI"})
+	s.under(style, "header", {size:10})
+	s.under(style, "label", {size:8})
+	
 	s.save(1)
 }

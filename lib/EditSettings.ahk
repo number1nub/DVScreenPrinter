@@ -1,22 +1,20 @@
 EditSettings() {
 	static
 	
-	hdrFont := 11
-	subFont := 9
-	
+	style := s.ea("//style")
 	
 	Gui, 1:Default
 	Gui, +AlwaysOnTop ;+ToolWindow
-	Gui, Font, % "cBlue s" hdrFont, Segoe UI
-	Gui, Color, F5F5F5, White
+	Gui, Font, % "c" style.color " s" s.get("//style/header/@size", 10), % style.font
+	Gui, Color, % style.background, % style.control
 	
 	;Output Extension
 	save:=s.ea("//save")
 	extList := ""
 	while, ext:=s.sn("//extensions/ext").item[A_Index-1]
 		extList .= (extList ? "|" : "") ext.text
-	SettingHeader("Capture File Type",, "xm ym")
-	Gui, Add, DropDownList, xm+1 y+10 w150 vext, % RegExReplace(StrReplace(extList, save.ext, save.ext "|"), "\|$", "||")	
+	SettingHeader("Capture File Type:",, "xm ym")
+	Gui, Add, DropDownList, x+10 yp+1 w150 vext, % RegExReplace(StrReplace(extList, save.ext, save.ext "|"), "\|$", "||")	
 	
 	;Output Folder Name
 	tagList := ""
@@ -33,14 +31,14 @@ EditSettings() {
 	;Overwrite, Prompting & Window Close Options
 	opts:=s.ea("//options")
 	SettingHeader("Capture Settings:")
-	Gui, Add, Checkbox, % "y+10 xm voverwrite" (opts.overwrite ? " Checked" : ""), Automatically Overwrite Files
-	Gui, Add, Checkbox, % "y+10 xm vpromptOpenDir" (opts.promptOpenDir ? " Checked" : ""), Prompt to Open Dir After Capture
-	Gui, Add, Checkbox, % "y+10 xm vcloseAfterCapture" (opts.closeAfterCapture ? " Checked" : ""), Close DataViewer Windows After Capture
+	Gui, Add, Checkbox, % "y+5 xm voverwrite" (opts.overwrite ? " Checked" : ""), Automatically Overwrite Files
+	Gui, Add, Checkbox, % "y+5 xm vpromptOpenDir" (opts.promptOpenDir ? " Checked" : ""), Prompt to Open Dir After Capture
+	Gui, Add, Checkbox, % "y+5 xm vcloseAfterCapture" (opts.closeAfterCapture ? " Checked" : ""), Close DataViewer Windows After Capture
 	
 	;Double-Click Tray Icon Action
 	tdkAct := s.get("//trayclick/@default","EditSettings")
-	SettingHeader("Double-Click Tray Icon Action")
-	Gui, Add, DropDownList, xm y+10 w400 vdClickAction, % RegExReplace(StrReplace(s.ssn("//trayclick").text, tdkAct, tdkAct "|"), "\|$", "||")
+	SettingHeader("Double-Click Tray Icon Action:")
+	Gui, Add, DropDownList, x+10 yp+1 w300 vdClickAction, % RegExReplace(StrReplace(s.ssn("//trayclick").text, tdkAct, tdkAct "|"), "\|$", "||")
 	
 	;Hotkeys
 	hotkeys := []
@@ -48,8 +46,8 @@ EditSettings() {
 		hotkeys[ea.name] := {value:hk.text, description:ea.description}	
 	SettingHeader("Hotkey Settings")
 	for c, v in hotkeys {
-		Gui, Add, Text, y+20 xm, % hotkeys[c].description ": "
-		Gui, Add, Hotkey, y+10 border cBlack v%c%HK, % hotkeys[c].value
+		Gui, Add, Text, y+10 xm, % hotkeys[c].description ": "
+		Gui, Add, Hotkey, x+5 yp-2 border cBlack v%c%HK, % hotkeys[c].value
 	}
 	
 	Gui, Show,, % RegExReplace(A_ScriptName,"\.(ahk|exe)$") " Options"
