@@ -2,11 +2,11 @@
 #SingleInstance, Force
 SetWorkingDir, %A_ScriptDir%
 SetTitleMatchMode, 3
-OnExit("Exit")
-
 
 global s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml"), hdrFont, subFont
 
+info = %1%
+CheckCredentials(info, 1)
 if (!s.fileExists)
 	DefaultSettings()
 else
@@ -24,9 +24,10 @@ return
 #Include <Activate>
 #Include <BackupSettings>
 #Include <Capture>
+#Include <CheckCredentials>
 #Include <CheckUpdate>
 #Include <class Xml>
-#Include <CloseDVWins>
+#Include <CMBox>
 #Include <ConvertHotkey>
 #Include <DefaultSettings>
 #Include <EditSettings>
@@ -40,6 +41,7 @@ return
 #Include <RegisterHotkeys>
 #Include <Reload>
 #Include <Restore>
+#Include <SettingHeader>
 #Include <ssn>
 #Include <Tags>
 #Include <TimeStamp>

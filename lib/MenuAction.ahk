@@ -5,7 +5,7 @@ MenuAction(){
 	}
 	else if (A_ThisMenuItem = "Close all DV Windows")
 		CloseDVWins()
-	else if (A_ThisMenuItem = "Backup/Export Settings")
+	else if (A_ThisMenuItem = "Export Settings to File")
 		BackupSettings()
 	else if (A_ThisMenuItem = "Import Settings from File")
 		ImportSettings()

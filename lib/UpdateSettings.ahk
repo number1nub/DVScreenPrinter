@@ -7,11 +7,6 @@ UpdateSettings() {
 			 , EditSettings:"Open Settings Editor"
 			 , CloseDVWins:"Close all DV Windows"}
 	
-	;Version
-	;auto_version
-	if (Version && (!curVer:=s.ssn("//version").text || curVer<Version))
-		s.ssn("//versoin").text := Version	
-	
 	;Extensions
 	if (s.sn("//options/extensions/*").Length != StrSplit(extList, ",").MaxIndex()) {
 		exts := s.ssn("//options/extensions")
@@ -31,8 +26,7 @@ UpdateSettings() {
 		curHks:=[]
 		while hk:=s.sn("//hotkeys/cmd").item[A_Index-1], ea:=s.ea(hk)
 			curHks[ea.name]:=hk.text
-		hks := s.ssn("//hotkeys")
-		hks.parentNode.removeChild(hks)
+		hks := s.ssn("//hotkeys"), hks.parentNode.removeChild(hks)
 		hks := s.add2("hotkeys")
 		for c, v in hkList
 			s.under(hks, "cmd", {name:c, description:v}, curHks[c])

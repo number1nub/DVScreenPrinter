@@ -1,5 +1,5 @@
 Capture() {
-	wList := GetWinList()
+	wList := GetWinList("(?P<Name>.+) - TerraVici DataViewer - (?P<File>.+)")
 	if (wList.MaxIndex() < 1)
 		return m("No DataViewer chart windows found!", "ico:!")
 	

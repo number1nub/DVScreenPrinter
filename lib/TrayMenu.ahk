@@ -9,7 +9,7 @@ TrayMenu() {
 	Menu, Tray, Add
 	Menu, Tray, Add, Close all DV Windows, MenuAction
 	Menu, Tray, Add
-	Menu, Tray, Add, Backup/Export Settings, MenuAction
+	Menu, Tray, Add, Export Settings to File, MenuAction
 	Menu, Tray, Add, Import Settings from File, MenuAction
 	if (!A_IsCompiled) {
 		Menu, Tray, Add
