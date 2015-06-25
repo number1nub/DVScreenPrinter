@@ -1,6 +1,7 @@
 TrayTip() {
-	Menu, Tray, Tip, % StrReplace("DV Screen Printer v;auto_version " (A_IsAdmin?"(admin) ":"") "is running...`n`n", "Version=")
-		 . "<" ConvertHotkey(s.ssn("//hotkeys/cmd[@name='Capture']").text) "> to capture screens`n"
-		 . "<" ConvertHotkey(s.ssn("//hotkeys/cmd[@name='EditSettings']").text) "> to open settings`n`n"
-		 . "D-Click icon: " s.ssn("//trayclick/@default").text
+	txt := StrReplace("DV Screen Printer v;auto_version " (A_IsAdmin?"(admin) ":"") "is running...`n`n", "Version=")
+	while, hk:=s.sn("//hotkeys/cmd").Item[A_Index-1], ea:=xml.ea(hk)
+		txt .= "<" ConvertHotkey(hk.text) "> - " ea.description "`n"
+	txt .= "`nD-Click Icon: " s.ea("//trayclick").default
+	Menu, Tray, Tip, % txt
 }

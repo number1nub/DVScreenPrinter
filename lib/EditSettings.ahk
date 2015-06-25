@@ -100,12 +100,13 @@ EditSettings() {
 	
 	s.save(1)
 	if (chg || rel)
-		TrayTip, DV Screen Printer, `nSettings saved..., .5, 1
+		TrayTip, DV Screen Printer, `nSettings saved..., .75, 1
 	if (rel) {
-		sleep 500
+		sleep 700
 		Reload
+		Pause
 	}
-	Menu, Tray, Default, %dClickAction%
+	Menu, Tray, Default, % dClickAction "`t(" ConvertHotkey(s.ssn("//hotkeys/cmd[@description='" dClickAction "']").text) ")"
 	TrayTip()
 	return
 }

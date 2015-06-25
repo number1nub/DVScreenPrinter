@@ -29,6 +29,7 @@ return
 #Include <CheckCredentials>
 #Include <CheckUpdate>
 #Include <class Xml>
+#Include <CloseDVWins>
 #Include <CMBox>
 #Include <ConvertHotkey>
 #Include <DefaultSettings>

@@ -21,5 +21,5 @@ ImportSettings() {
 		}
 	}
 	m("Settings successfully imported from " loadPath, "ico:i")
-	Reload(1)
+	Reload()
 }
