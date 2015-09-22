@@ -5,16 +5,11 @@ TrayMenu() {
 	Menu, Tray, NoStandard
 	
 	while, hk:=s.sn("//hotkeys/cmd").Item[A_Index-1], ea:=xml.ea(hk)
-		Menu, Tray, Add, % ea.description "`t(" ConvertHotkey(hk.text) ")", % ea.name ;#[TODO: Change hotkey CMD descriptions & tray default actions to match]
+		Menu, Tray, Add, % ea.description (hk.text ? "`t(" ConvertHotkey(hk.text) ")" : ""), % ea.name
 	
-	;~ Menu, Tray, Add, Edit Settings, EditSettings
-	;~ Menu, Tray, Add, Capture Screens, Capture
-	;~ Menu, Tray, Add, Open Captures Folder, MenuAction
-	;~ Menu, Tray, Add
-	;~ Menu, Tray, Add, Close all DV Windows, MenuAction
 	Menu, Tray, Add
-	Menu, Tray, Add, Export Settings to File, MenuAction
-	Menu, Tray, Add, Import Settings from File, MenuAction
+	Menu, Tray, Add, Export Settings to File, BackupSettings
+	Menu, Tray, Add, Import Settings from File, ImportSettings
 	if (!A_IsCompiled) {
 		Menu, Tray, Add
 		Menu, Tray, Add, Default AHK Menu, :AhkStdMenu
@@ -24,8 +19,10 @@ TrayMenu() {
 	Menu, Tray, Add
 	Menu, Tray, Add, Reload
 	Menu, Tray, Add, Exit
-	tDefault := s.ssn("//trayclick/@default").text
-	Menu, Tray, Default, % tDefault "`t(" ConvertHotkey(s.ssn("//hotkeys/cmd[@description='" tDefault "']").text) ")"
+	
+	tDefault   := s.ssn("//trayclick/@default").text
+	tDefaultHK := s.ssn("//hotkeys/cmd[@description='" tDefault "']").text
+	Menu, Tray, Default, % tDefault (tDefaultHK ? "`t(" ConvertHotkey(tDefaultHK) ")" : "")
 	
 	if (A_IsCompiled)
 		Menu, Tray, Icon, %A_ScriptFullPath%, -159

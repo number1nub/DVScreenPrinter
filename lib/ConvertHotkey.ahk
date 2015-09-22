@@ -1,4 +1,4 @@
-ConvertHotkey(key){
+ConvertHotkey(key) {
 	StringUpper,key,key
 	for a,b in [{Shift:"+"},{Ctrl:"^"},{Alt:"!"}]
 		for c,d in b

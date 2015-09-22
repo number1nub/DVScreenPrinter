@@ -10,7 +10,10 @@ Tags(str:="", info:="") {
 			if (pos:=InStr(str, "$" v))
 				minPos := pos < minPos ? pos-1 : minPos
 		str := SubStr(str, 1, minPos)
-		return RegExReplace(StrReplace(str, "\\", "\"), "\\$")
+		str := RegExReplace(StrReplace(str, "\\", "\"), "\\$")
+		while (!FileExist(str) && str)
+			str := RegExReplace(str, "(.+)\\.+$", "$1")
+		return str
 	}
 	
 	tags := { date:       TimeStamp()

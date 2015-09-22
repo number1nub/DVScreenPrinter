@@ -1,17 +1,17 @@
-CheckCredentials(attempts:="", silent:="") {
+CheckCredentials(info:="") {
 	if (!A_IsAdmin) {
-		if (!attempts && silent) {
-			Run, *runas "%A_ScriptFullPath%" 1
+		if (info != "admin") {
+			Run, *runas "%A_ScriptFullPath%" admin
 			ExitApp
 		}
-		else if (attempts) {
-			ans := CMBox("Currently NOT running with admin privileges...`n`nAttempt to re-launch with administrator privileges?"
-				   , "Yes, Reload as Admin|No, Continue|Cancel && Exit", {ico:"i"})
+		ans := CMBox("Currently NOT running with admin privileges...`n`nAttempt to re-launch as admin?", "Yes, Reload as Admin|No, Continue|Cancel && Exit", {ico:"?"})
+		if (Instr(ans, "Exit"))
+			ExitApp
+		else if (InStr(ans, "Yes,")) {
+			Run, *RunAs "%A_ScriptFullPath%" admin
+			ExitApp
 		}
-		if (Instr(ans, "No, Continue"))
-			return
-		else if (InStr(ans, "Yes, Reload"))
-			Run *RunAs "%A_ScriptFullPath%" 1
-		ExitApp
+		return
 	}
+	return 1
 }

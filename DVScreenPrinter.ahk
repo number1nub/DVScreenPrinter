@@ -3,17 +3,13 @@
 SetWorkingDir, %A_ScriptDir%
 SetTitleMatchMode, 3
 
+if (isAdmin:=CheckCredentials(%true%))
+	if (%true% != "silent")
+		TrayTip, DVScreenPrinter, `nRunning as Admin..., 1, 1
+
 global s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml")
 
-info = %1%
-CheckCredentials(info, 1)
-if (info)
-	TrayTip, DVScreenPrinter, `nRunning as Admin..., 1, 1
-if (!s.fileExists)
-	DefaultSettings()
-else
-	UpdateSettings()
-
+s.fileExists ? UpdateSettings() : DefaultSettings()
 if (!FileExist(A_ScriptDir "\gdiplus.dll") && A_IsCompiled)
 	FileInstall, gdiplus.dll, %A_ScriptDir%\gdiplus.dll
 TrayMenu()
@@ -23,31 +19,30 @@ return
 
 
 
-#Include <Activate>
-#Include <BackupSettings>
-#Include <Capture>
-#Include <CheckCredentials>
-#Include <CheckUpdate>
-#Include <class Xml>
-#Include <CloseDVWins>
-#Include <CMBox>
-#Include <ConvertHotkey>
-#Include <DefaultSettings>
-#Include <EditSettings>
-#Include <Exit>
-#Include <Gdip>
-#Include <GetWinList>
-#Include <Hotkeys>
-#Include <ImportSettings>
-#Include <m>
-#Include <MenuAction>
-#Include <RegisterHotkeys>
-#Include <Reload>
-#Include <Restore>
-#Include <SettingHeader>
-#Include <ssn>
-#Include <Tags>
-#Include <TimeStamp>
-#Include <TrayMenu>
-#Include <TrayTip>
-#Include <UpdateSettings>
+#Include lib\Activate.ahk
+#Include lib\BackupSettings.ahk
+#Include lib\Capture.ahk
+#Include lib\CheckCredentials.ahk
+#Include lib\CheckUpdate.ahk
+#Include lib\class Xml.ahk
+#Include lib\CloseDVWins.ahk
+#Include lib\CMBox.ahk
+#Include lib\ConvertHotkey.ahk
+#Include lib\DefaultSettings.ahk
+#Include lib\EditSettings.ahk
+#Include lib\Exit.ahk
+#Include lib\Gdi.ahk
+#Include lib\GetWinList.ahk
+#Include lib\Hotkeys.ahk
+#Include lib\ImportSettings.ahk
+#Include lib\m.ahk
+#Include lib\OpenCaptureDir.ahk
+#Include lib\RegisterHotkeys.ahk
+#Include lib\Reload.ahk
+#Include lib\Restore.ahk
+#Include lib\SettingHeader.ahk
+#Include lib\Tags.ahk
+#Include lib\TimeStamp.ahk
+#Include lib\TrayMenu.ahk
+#Include lib\TrayTip.ahk
+#Include lib\UpdateSettings.ahk

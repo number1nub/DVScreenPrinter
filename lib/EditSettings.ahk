@@ -102,9 +102,9 @@ EditSettings() {
 	if (chg || rel)
 		TrayTip, DV Screen Printer, `nSettings saved..., .75, 1
 	if (rel) {
-		sleep 700
-		Reload
-		Pause
+		sleep 750
+		Run, "%A_ScriptFullPath%" silent
+		ExitApp
 	}
 	Menu, Tray, Default, % dClickAction "`t(" ConvertHotkey(s.ssn("//hotkeys/cmd[@description='" dClickAction "']").text) ")"
 	TrayTip()
