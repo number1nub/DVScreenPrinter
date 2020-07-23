@@ -106,7 +106,8 @@ EditSettings() {
 		Run, "%A_ScriptFullPath%" silent
 		ExitApp
 	}
-	Menu, Tray, Default, % dClickAction "`t(" ConvertHotkey(s.ssn("//hotkeys/cmd[@description='" dClickAction "']").text) ")"
+	dClickActionXtra := (dClickHK:=s.ssn("//hotkeys/cmd[@description='" dClickAction "']").text) ? "`t(" ConvertHotkey(dClickHK) ")" : ""
+	Menu, Tray, Default, % dClickAction dClickActionXtra
 	TrayTip()
 	return
 }

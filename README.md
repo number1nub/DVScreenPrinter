@@ -7,6 +7,13 @@ and functionality in order to allow you to capture images in many formats, in 1 
 Changelog
 ----------------------------------------------------
 
+### 2.2.5
+-Fixed: $rssNum tag now also matches 3 digit collar # - build #, CS # and SS #
+-Fixed: DV window titles no longer must contain " - TerraVici DataViewer", window matching now uses DV's window class
+### 2.2.4
+-Added: Command with customizable hotkey to open the root capture folder
+-Fixed: Tag stripping now strips values until a valid folder path is found
+
 ### 2.1.3
 - Added: $appDir tag which results in the full path of the folder containing the DVScreenPrinter app
 - Added: browse button on folder settings to open to best matching folder from current setting
