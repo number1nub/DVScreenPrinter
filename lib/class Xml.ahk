@@ -145,27 +145,15 @@ class xml
 		return value := this.ssn(path).text!="" ? this.ssn(path).text : default
 	}
 	
-	transform() {
+	Transform(Loop:=1){
 		static
-		if !IsObject(xsl) {
-			xsl := ComObjCreate("MSXML2.DOMDocument")
-			style=
-			(
-			<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-			<xsl:output method="xml" indent="yes" encoding="UTF-8"/>
-			<xsl:template match="@*|node()">
-				<xsl:copy>
-					<xsl:apply-templates select="@*|node()"/>
-					<xsl:for-each select="@*">
-						<xsl:text></xsl:text>
-					</xsl:for-each>
-				</xsl:copy>
-			</xsl:template>
-			</xsl:stylesheet>
-			)
-			xsl.loadXML(style), style:=null
+		if(!IsObject(XSL)) {
+			XSL:=ComObjCreate("MSXML2.DOMDocument")
+			XSL.LoadXML("<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""><xsl:output method=""xml"" indent=""yes"" encoding=""UTF-8""/><xsl:template match=""@*|node()""><xsl:copy>`n<xsl:apply-templates select=""@*|node()""/><xsl:for-each select=""@*""><xsl:text></xsl:text></xsl:for-each></xsl:copy>`n</xsl:template>`n</xsl:stylesheet>")
+			Style:=null
 		}
-		this.xml.transformNodeToObject(xsl, this.xml)
+		Loop,%Loop%
+			this.XML.TransformNodeToObject(XSL,this.XML)
 	}
 	
 	save(x*) {

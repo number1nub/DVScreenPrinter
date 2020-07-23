@@ -19,7 +19,7 @@ Tags(str:="", info:="") {
 	tags := { date:       TimeStamp()
 			, fileName:   info.filename
 			, filePath:   info.filepath
-			, rssNum:     RegExMatch(info.filepath, "i)RSS[-|_|\s]*?(\d{4})", m) ? m1 : "RSS????"
+			, rssNum:     RegExMatch(info.filename, "i)((?:RSS[-|_|\s]?\d{3,4}(?:-\d+)?)|(?:(?:CS|SS)[\s-_]?\d{3}))", m) ? m1 : (info.filename ? info.fileName : "Unknown RSS #")
 			, time:       TimeStamp("h:mm tt")
 			, windowName: info.name
 			, appDir:     A_ScriptDir }

@@ -19,30 +19,30 @@ return
 
 
 
-#Include lib\Activate.ahk
-#Include lib\BackupSettings.ahk
-#Include lib\Capture.ahk
-#Include lib\CheckCredentials.ahk
-#Include lib\CheckUpdate.ahk
-#Include lib\class Xml.ahk
-#Include lib\CloseDVWins.ahk
-#Include lib\CMBox.ahk
-#Include lib\ConvertHotkey.ahk
-#Include lib\DefaultSettings.ahk
-#Include lib\EditSettings.ahk
-#Include lib\Exit.ahk
-#Include lib\Gdi.ahk
-#Include lib\GetWinList.ahk
-#Include lib\Hotkeys.ahk
-#Include lib\ImportSettings.ahk
-#Include lib\m.ahk
-#Include lib\OpenCaptureDir.ahk
-#Include lib\RegisterHotkeys.ahk
-#Include lib\Reload.ahk
-#Include lib\Restore.ahk
-#Include lib\SettingHeader.ahk
-#Include lib\Tags.ahk
-#Include lib\TimeStamp.ahk
-#Include lib\TrayMenu.ahk
-#Include lib\TrayTip.ahk
-#Include lib\UpdateSettings.ahk
+#Include <Activate>
+#Include <BackupSettings>
+#Include <Capture>
+#Include <CheckCredentials>
+#Include <CheckUpdate>
+#Include <class Xml>
+#Include <CloseDVWins>
+#Include <CMBox>
+#Include <ConvertHotkey>
+#Include <DefaultSettings>
+#Include <EditSettings>
+#Include <Exit>
+#Include <Gdi>
+#Include <GetWinList>
+#Include <Hotkeys>
+#Include <ImportSettings>
+#Include <m>
+#Include <OpenCaptureDir>
+#Include <RegisterHotkeys>
+#Include <Reload>
+#Include <Restore>
+#Include <SettingHeader>
+#Include <Tags>
+#Include <TimeStamp>
+#Include <TrayMenu>
+#Include <TrayTip>
+#Include <UpdateSettings>

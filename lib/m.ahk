@@ -9,7 +9,7 @@ m(info*) {
 			txt .= (txt ? "`n":"") v
 	}
 	MsgBox, % (opt+262144), %title%, %txt%, %timeout%
-	IfMsgBox, OK
+	IfMsgBox, Ok
 		return (mBtns ? "OK":"")
 	else IfMsgBox, Yes
 		return "YES"
