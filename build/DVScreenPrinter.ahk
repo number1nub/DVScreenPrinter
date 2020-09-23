@@ -9,10 +9,11 @@ if (isAdmin:=CheckCredentials(%true%))
 
 global version, s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml")
 
-version = 2.2.5
+version = 2.2.6
 s.fileExists ? UpdateSettings() : DefaultSettings()
-if (!FileExist(A_ScriptDir "\gdiplus.dll") && A_IsCompiled)
-	FileInstall, gdiplus.dll, %A_ScriptDir%\gdiplus.dll
+if (!FileExist(A_ScriptDir "\gdiplus.dll") && A_IsCompiled) {
+	FileInstall, C:\Windows\System32\gdiplus.dll, %A_ScriptDir%\gdiplus.dll
+}
 TrayMenu()
 RegisterHotkeys()
 CheckUpdate()

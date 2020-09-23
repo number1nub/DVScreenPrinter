@@ -12,7 +12,7 @@ global version, s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml"
 version = ;auto_version
 s.fileExists ? UpdateSettings() : DefaultSettings()
 if (!FileExist(A_ScriptDir "\gdiplus.dll") && A_IsCompiled) {
-	FileInstall, gdiplus.dll, %A_ScriptDir%\gdiplus.dll
+	FileInstall, C:\Windows\System32\gdiplus.dll, %A_ScriptDir%\gdiplus.dll
 }
 TrayMenu()
 RegisterHotkeys()

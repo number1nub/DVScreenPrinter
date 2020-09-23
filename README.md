@@ -7,6 +7,10 @@ and functionality in order to allow you to capture images in many formats, in 1 
 Changelog
 ----------------------------------------------------
 
+### 2.2.6
+- Fixed: Auto versioning & version display in tray/settings GUI
+- Changed: Cleaned up source files and created a build dir
+
 ### 2.2.5
 -Fixed: $rssNum tag now also matches 3 digit collar # - build #, CS # and SS #
 -Fixed: DV window titles no longer must contain " - TerraVici DataViewer", window matching now uses DV's window class

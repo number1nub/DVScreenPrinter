@@ -1,0 +1,28 @@
+2.2.6
+- Fixed: Auto versioning & version display in tray/settings GUI
+- Changed: Cleaned up source files and created a build dir
+2.2.5
+- Fixed: $rssNum tag now also matches 3 digit collar # - build #, CS # and SS #
+- Changed: DV window titles no longer must contain " - TerraVici DataViewer", window matching now uses DV's window class
+2.2.4
+- Added: Command with customizable hotkey to open the root capture folder
+- Fixed: Tag stripping now strips values until a valid folder path is found
+2.2.3
+- Added: $appDir tag: replaced with full path of folder containing DVScreenPrinter
+- Added: Customizable hotkey to close all DataViewer windows
+- Changed: Automatically checks for admin credentials on startup and attempts to reload as admin if required
+- Changed: Tray menu, tray tip and settings GUI automatically generated based on settings XML
+- Fixed: Edit settings GUI properly detects when a setting has been changed
+2.2.2
+- Added: Check for admin credentials and attempt to reload as admin
+- Fixed: Edit settings GUI wasn't properly detecting when settings were changed on close
+- Changed: GUI style settings now saved in XML
+- Changed: Settings GUI code cleaned up and automated based on XML settings
+2.2.0
+-Added: $appDir tag which results in the full path of the folder containing the DVScreenPrinter app-Added: Customizable hotkey to close all DataViewer windows
+2.1.2
+- Fixed 'Close all DV Windows' command- Added $appDir tag which results in the full path of the folder containing the DVScreenPrinter app- Fixed browse button on folder settings to open to best matching folder from current setting
+2.1.1
+- Proper Handling of launching captures folder, regardless of tags- Added: Option to automatically close all DataViewer windows after capture- Added: 'Close all DataViewer Windows' command to tray menu- Added: 'Open Captures Folder' command to tray menu
+2.1.0
+- Added options to backup & import settings to/from files- Fixed bug when saving new hotkey- Re-organized settings- Added version to settings.xml
