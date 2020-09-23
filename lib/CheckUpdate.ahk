@@ -6,10 +6,8 @@ CheckUpdate(_ReplaceCurrentScript:=1, _SuppressMsgBox:=0, _CallbackFunction:="",
 	Static Update_URL  := "http://tv.wsnhapps.com/DVScreenPrinter/DVScreenPrinter.text"
 		 , Download_URL := "http://tv.wsnhapps.com/DVScreenPrinter/DVScreenPrinter.exe"
 		 , Retry_Count := 2
-		 , Script_Name
-		 , Version
+		 , Script_Name := "DVScreenPrinter"
 	
-	;auto_version
 	if (!Version)
 		return
 	if (!Script_Name) {

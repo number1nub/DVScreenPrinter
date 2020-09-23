@@ -50,7 +50,7 @@ EditSettings() {
 		Gui, Add, Hotkey, x+5 yp-2 border cBlack v%c%HK, % hotkeys[c].value
 	}
 	
-	Gui, Show,, % RegExReplace(A_ScriptName,"\.(ahk|exe)$") " Options"
+	Gui, Show,, % RegExReplace(A_ScriptName,"\.(ahk|exe)$") (version ? " v" version : "") " Options"
 	return
 	
 	

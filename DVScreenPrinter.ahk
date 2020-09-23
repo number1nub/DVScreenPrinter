@@ -7,11 +7,13 @@ if (isAdmin:=CheckCredentials(%true%))
 	if (%true% != "silent")
 		TrayTip, DVScreenPrinter, `nRunning as Admin..., 1, 1
 
-global s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml")
+global version, s:=new xml("settings", A_AppData "\DVScreenPrinter\settings.xml")
 
+version = ;auto_version
 s.fileExists ? UpdateSettings() : DefaultSettings()
-if (!FileExist(A_ScriptDir "\gdiplus.dll") && A_IsCompiled)
+if (!FileExist(A_ScriptDir "\gdiplus.dll") && A_IsCompiled) {
 	FileInstall, gdiplus.dll, %A_ScriptDir%\gdiplus.dll
+}
 TrayMenu()
 RegisterHotkeys()
 CheckUpdate()
